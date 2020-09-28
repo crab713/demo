@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    username: root
+    password: xjc20010618
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    static-path-pattern: /static/**
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo,bean
+
+

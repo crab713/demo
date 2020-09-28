@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+当前用户<span id="username">null</span> <br>
+留言框：<input type="text" id="context" name="context"><br>
+<input type="button" onclick="sub()" value="submit">
+<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+<script type="application/javascript">
+    function getCookie(name) {
+        var v = window.document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return v ? v[2] : null;
+    }
+    var user=getCookie("name");
+    document.getElementById("username").innerHTML=user;
+    $.ajax({
+        async : false,
+        type : 'POST',
+        url : "http://localhost:8080/getContext",
+        success : function (data) {
+            // alert(data[0]["context"]);
+        },
+        error : function () {
+            alert("error");
+        }
+    });
+
+    function sub() {
+        var context = {};
+        context.username=user;
+        context.context=document.getElementById("context").value;
+        $.ajax({
+            async : false,
+            type : 'POST',
+            url : "http://localhost:8080/addContext",
+            data : context,
+            success : function (data) {
+                alert(data["message"]);
+            },
+            error : function () {
+                alert("error");
+            }
+        })
+    }
+</script>
+
+</body>
+</html>
