@@ -3,7 +3,7 @@ spring:
     name: test
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
-    password: xjc20010618
+    password: 111
     driver-class-name: com.mysql.jdbc.Driver
   mvc:
     static-path-pattern: /static/**
